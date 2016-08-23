@@ -1,0 +1,14 @@
+.progress {
+    height: 300px;
+}
+
+.progress > svg {
+    height: 100%;
+    display: block;
+}
+
+
+#bar1{
+    width:130px;
+    height:130px;
+}

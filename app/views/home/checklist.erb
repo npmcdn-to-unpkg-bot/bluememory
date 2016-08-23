@@ -1,0 +1,95 @@
+<%= render :partial => "/home/sidebar" %>
+
+		<div class="phone-box wrap push">
+		    <!-- nav -->
+			<div class="navtop">
+				<div class="nav-left">
+					<a href="#menu" class="menu-link"><img src="/assets/left-top.gif" class="nav-img"/></a>
+				</div>
+				<div class="nav-name">
+					<h5 class="pro-link">CHECKLIST</h5>
+				</div>
+				<div class="nav-right">
+				    <a href="/home/index"><img src="/assets/go-home.gif" class="nav-img"/></a>
+				</div>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<!--리얼 바디-->
+			<!--체크리스트 복붙은여기부터-->
+			<div class="haha"></div>
+	        <div class="checklist_div">
+        		        <div class="food_check">
+        			    	<table border="0" width="400" class="food_check_table">
+        			    		<% @checklists.each do |p|%>
+	                            <tr onclick="DoNav('/home/checklist1/<%= p.id %>')">
+	                            <td class="food_check_line indent"><%=p.title%></td>
+	                            </tr>
+	                            <% end %>
+                      		</table>
+        		        </div>
+        		<button id="myBtn" class="adder"><img class="adder2" src="/assets/addcheck.png"></button>
+	        </div>
+	        <div class="haha2"></div>
+	        <div class="haha3"></div>
+			<!--끝-->		       
+		</div>	
+		
+    <!-- Modal -->
+		<form action="/home/checklist_create" method="post">
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-dialog" style="margin-top: 50%;">
+		        <div class="modal-content">
+		            <div class="modal-header" class="checkmodal" style="background-color: #fdd020; border-bottom: 1px solid #fdd020;">
+		                <h4 class="modal-title" id="myModalLabel" 
+		                style="text-align: center;
+							    font-family: 'Noto Sans Korean', 'Open Sans', sans-serif;
+							    font-weight: 200;
+							    color: #fff;
+							    font-size: 20px;
+							    height:10px;">체크리스트 추가</h4>
+		            </div>
+		            <div class="modal-body" class="checkmodal" style="background-color: #fdd020; margin-bottom: -12px;">
+		                <input type="text" class="form-control" name="title" placeholder="체크리스트 제목을 입력하세요">
+		            </div>
+		            <div class="modal-footer" class="checkmodal" style="background-color: #fdd020; border-top: 1px solid #fdd020;">
+		                
+		                <button type="button" class="btn btn-default" data-dismiss="modal"
+		                	style="background-color: white;
+		                	margin-left: 10px;
+						    text-align: center;
+						    font-family: 'Noto Sans Korean', 'Open Sans', sans-serif;
+						    font-weight: 200;
+						    color: #fdd020;
+						    font-size: 20px;
+						    border: none"
+						    >취소</button>
+						    
+		                <button type="submit" class="btn btn-primary"
+		                	style="background-color: white;
+						    text-align: center;
+						    font-family: 'Noto Sans Korean', 'Open Sans', sans-serif;
+						    font-weight: 200;
+						    color: #fdd020;
+						    font-size: 20px;
+					        border: none;"
+						    >추가하기</button></a>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	</form>
+<script>
+// when DOM is ready
+$(document).ready(function () {
+
+     // Attach Button click event listener 
+    $("#myBtn").click(function(){
+
+         // show Modal
+         $('#myModal').modal('show');
+    });
+});
+</script>
+<script src="/assets/jquery.nicescroll.js"></script>
+<script src="/assets/scripts.js"></script>

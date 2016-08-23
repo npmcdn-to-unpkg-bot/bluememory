@@ -1,0 +1,95 @@
+<!--가입-->
+<body>
+	<br><br><br><br>
+	<img src="/assets/bluemem.png" class="logo_alpha orii" alt=" " style="width:260px; margin-left:55px;">
+	<br>
+	
+	<div class="agreement_box">
+		<div class="lable" style="margin-left:55px;">| 개인정보약관</div>
+		<div class="agreement">
+		    <hr>
+				<p><strong>1. 개인정보의 처리 목적</strong></p>
+		      	<현대자동차그룹 블루메모리>(이하 '블루메모리') 은(는) 다음의 목적을 위하여 개인정보를 처리하고 있으며, 
+		      	다음의 목적 이외의 용도로는 이용하지 않습니다.</br></br> 
+		      	- 고객 가입의사 확인, 고객에 대한 서비스 제공에 따른 본인 식별.인증, 회원자격 유지.관리</br></br>
+		  	
+		  		<p><strong>2. 정보주체의 권리,의무 및 그 행사방법</strong></p>
+		  		이용자는 개인정보주체로서 다음과 같은 권리를 행사할 수 있습니다.</br></br>
+		  	
+		      	<p>① 정보주체는 <블루메모리>에 대해 언제든지 다음 각 호의 개인정보 보호 관련 권리를 행사할 수 있습니다.</br>
+		      	&nbsp;&nbsp;&nbsp;1. 개인정보 열람요구</br>
+		      	&nbsp;&nbsp;&nbsp;2. 오류 등이 있을 경우 정정 요구</br>
+		      	&nbsp;&nbsp;&nbsp;3. 삭제요구</br>
+		      	&nbsp;&nbsp;&nbsp;4. 처리정지 요구</p></br>
+		    <br>
+	    </div>
+	</div>
+	
+	<div class="checkbox" style="margin-left:55px; margin-top:15px;">
+  		<label><input type="checkbox" id="chk_info">약관에 동의합니다.</label>
+	</div>
+	
+	<div class="container01">
+		<div class="login-inner" id="about">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+		        <%= devise_error_messages! %>
+		        
+		        <br>
+		        <div class="field" style="text-align: left;">
+		          <div class="in_mailbox2">
+		            <%= f.email_field :email, autofocus: false, :autocomplete => 'off', placeholder: "이메일" %>
+		     
+		          </div>
+		        </div>
+		      
+		        <div class="field" style="text-align: left;">
+		          <div class="in_mailbox2">
+		            <% if @minimum_password_length %>
+		            <% end %><br />
+		            <div class="chichi"><%= f.password_field :password, autocomplete: "off", placeholder: "비밀번호 (6자 이상)" %></div>
+		          </div>
+		        </div>
+		        
+		        <div class="field" style="text-align: left;">
+		          <div class="in_mailbox2">
+		         	<br />
+		            <div class="chichi"> 
+		            	<%= f.text_field :name, autofocus: false, :autocomplete => 'off', placeholder: '닉네임', :maxlength => 6 %>
+		            
+		            </div>
+		          </div>
+		        </div>
+		        
+		        <div class="field" style="text-align: left;">
+		          <div class="in_mailbox2">
+		         	<br />
+		            <div class="chichi"> 
+		            	<%= f.text_field :car_id, autofocus: false, :autocomplete => 'off', placeholder: '차량ID', :maxlength => 6 %>
+		            
+		            </div>
+		          </div>
+		        </div>
+		        <div class="actions signin_btnn" id="button_signup">
+					<div class="ttt">
+				 		<%= f.submit "회원가입" %>
+					</div>
+				</div>
+			<% end %>
+	    </div>
+	</div>   	
+	<br>
+		
+	<div class="what">
+		<%= render "devise/shared/links" %>
+	</div>
+</body>
+
+<script>
+$("input[name=commit]").click(function(){
+    if(!($('#chk_info').is(":checked")))
+    {
+      alert("회원가입 약관에 동의해 주세요");
+      return false;
+    }
+});
+</script>

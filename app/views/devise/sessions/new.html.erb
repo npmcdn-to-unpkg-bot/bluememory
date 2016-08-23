@@ -1,0 +1,40 @@
+<body> 
+<!--로그인-->
+	<div class="container">
+		<div class="login-back qqq">
+			<div class="login-inner" id="about">
+				<img src="/assets/logodog.png" class="logodog" alt=" " />
+				<img src="/assets/bluemem.png" class="logo_alpha oriori" alt=" " />
+				
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field" style="text-align: left;">
+              <div class="in_mailbox">
+                <%= f.email_field :email, autofocus: true, :autocomplete => 'off', placeholder: "이메일" %>
+              </div>
+            </div>
+          
+            <div class="field" style="text-align: left;">
+              <div class="in_mailbox">
+                <%= f.password_field :password, :autocomplete => 'off', placeholder: "비밀번호" %>
+              </div>
+            </div>
+            
+            <div class="actions login_btnn">
+              <div class="ttt"><%= f.submit "로그인" %></div>
+            </div>
+          <% end %>
+			
+			</div>
+		</div>
+		
+		<div class="what">
+		  <%= render "devise/shared/links" %>
+		</div>
+	
+	</div>
+</body>
+
+
+
+
+

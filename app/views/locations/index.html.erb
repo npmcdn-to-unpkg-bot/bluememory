@@ -1,0 +1,427 @@
+<!-- 
+<p id="notice"><!%= notice %></p>
+
+<h1>Listing Locations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Address</th>
+      <th>Description</th>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+-->
+
+<!--
+<table>
+  <tbody>
+    <!% @locations.each do |location| %>
+      <tr>
+        <td><!%= location.latitude %></td>
+        <td><!%= location.longitude %></td>
+        <td><!%= location.address %></td>
+        <td><!%= location.description %></td>
+        <td><!%= location.title %></td>
+        <td><!%= link_to 'Show', location %></td>
+        <td><!%= link_to 'Edit', edit_location_path(location) %></td>
+        <td><!%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <!% end %>
+  </tbody>
+</table>
+
+<br>
+-->
+
+
+<script src="//maps.google.com/maps/api/js?v=3.23&key=AIzaSyAkw0vogaHZ5tUx7BKzBn-kKoy7iCR2MD4&region=KR"></script>
+<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+<script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
+
+<body>
+<div class="body-back">
+	<div class="masthead pdng-stn1">
+		<!--사이드바-->
+		<div id="menu" class="sidenav" role="navigation">
+			<div class="wrap-content">
+				<div class="nav-menu text-center">
+					<img class="nav-profile img-circle border-effect" src="/assets/ilguk.png" alt=" ">
+					<img class="side-go nav-camera" onclick="DoNav('/home/myprofile')" src="/assets/camera.gif" alt=" ">
+					<p class="nav-nickname"><%=current_user.name%></p>
+					<button class="nav-proedit-btn" onclick="DoNav('/users/sign_out')">로그아웃</button>
+
+					
+					<div class="side-go" onclick="DoNav('/home/myfood')">
+						<img class="side-nemo" src="/assets/my_food.png" alt=" ">
+						<p class="side-nemo-label">여행일지</p>
+					</div>	
+					
+					<div class="side-go" onclick="DoNav('/home/checklist')">
+						<img class="side-nemo" src="/assets/checklist.gif" alt=" ">
+						<p class="side-nemo-label">체크리스트</p>
+					</div>
+					
+					<div class="side-go" onclick="DoNav('/home/qna')">
+						<img class="side-nemo" src="/assets/qna.png" alt=" ">
+						<p class="side-nemo-label">Q&A</p>
+					</div>
+					
+					<div class="side-go" onclick="DoNav('/home/setting')">
+						<img class="side-nemo" src="/assets/setting.png" alt=" ">
+						<p class="side-nemo-label">설정</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="phone-box wrap push">
+	    <!-- nav -->
+		<div class="navtop">
+			<div class="nav-left">
+				<a href="#menu" class="menu-link"><img src="/assets/left-top.gif" class="nav-img"/></a>
+			</div>
+			
+			<div class="nav-name">
+				<a href="/home/product_detail" style="text-decoration: none"><h5 class="pro-link uuuset"> REVIEW </h5></a>
+			</div>
+			
+			<div class="nav-right">
+			    <a href="/home/index"><img src="/assets/go-home.gif" class="nav-img"/></a>
+			</div>
+			<div class="clearfix"></div>
+		</div> 
+		
+		<!--리얼바디-->
+		<div class="main-grid">
+			<div class="main-shade01">
+				
+				<!-- 
+				<div class="food_search">
+					<form>
+						<input type="search" placeholder="검색어를 입력해주세요!" >
+						  <a href="/home/product_detail"><input type="submit" value=" "></a>
+  						<div class="search_click" onclick="DoNav('/home/product_detail')"></div>
+					</form>
+				</div>
+				
+				<div class="search_rec">
+					<p>
+						<a href="/home/product_detail" class="search_rec_k"> #아기과자 </a>
+						<a href="/home/product_detail" class="search_rec_k">#과자</a>
+						<a href="/home/product_detail" class="search_rec_k">#GMO</a>
+						<a href="/home/product_detail" class="search_rec_k">#감자칩</a>
+					</p>
+				</div>
+				-->
+				
+				<% @post = Article.find(@article_id) %>
+				
+        		<div class="menu_img">
+					<div class="menu_each_product">
+						<div class="each_product_detail">
+		   
+		              <div style='width: 335px;'>
+		                <div id="map" style='width: 335px; height: 300px;'></div>
+		              </div><br>
+		       
+              
+              
+              <!--<!%= link_to 'New Location', new_location_path %> -->
+              
+              
+    
+            <!-- 구글맵 끝 -->
+     						<% if @post.car_id == 'ac67748cdfb42803da872962f9e5209e'%>
+     							<% @picture = '/assets/ilguk.png' %>
+     						<% elsif @post.car_id == 'b5607f88acb5fcff52eac82f860a3c12' %>
+     							<% @picture = '/assets/profile4.png' %>
+     						<% elsif @post.car_id == '3c7959088ef21a7c2948d6e294d47c89' %>
+     							<% @picture = '/assets/profile5.png' %>
+     						<% elsif @post.car_id == '926b34f4d951772b5c57700491e4a380' %>
+     							<% @picture = '/assets/profile6.png' %>
+     						<% elsif @post.car_id == 'ec95408226ffe38fb0c7125469019f11' %>
+     							<% @picture = '/assets/profile7.png' %>
+     						<% else %>
+								<% @picture = '/assets/profile8.png' %>
+							<% end %>	
+
+	            
+
+							<div class="product_left">
+								<img class="product_pic" src="<%= @picture %>" width="120px" height="120px">
+							</div>
+	
+							<div class="product_right" style="padding-left:5px;">
+							    <div class="right_div">
+									<p><br>
+									    <span class="bbold">작성자 :</span> <%= @post.name %> </br>
+									    <span class="bbold">여행기간 :</span> <%= @post.period %> </br>
+									    <span class="bbold">방문지 :</span> <%= @post.visited %> </br>
+									    <% if @post.rating == 0 %>
+									    	<span class="bbold">여행만족도 : 어떤 여행이었나요?</span>
+									    	<input type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" value="평가하기">
+									    <% else %>
+									    	<%if user_signed_in?%>
+												<% if current_user.articles.where(statuses: {liked: true}).include? @this_article %>     
+									            	<a href="/home/like_delete/<%= @this_article.id %>" type="submit"> 
+									            	<img  style="width:16px; height:16px; padding-top: 2px;" src="/assets/liked.png">
+									            	&nbsp;<span style="font-weight: 600; margin-top:30px;">좋아요 취소 : <%= @this_article.like_num %>개</span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+									            
+									            <% else %>
+									             	<a href="/home/like_process/<%= @this_article.id %>" type="submit">
+									            	<img style="width: 16px; height:16px; padding-top: 2px;" src="/assets/like.png">
+									            	&nbsp;<span style="font-weight: 300; margin-top:30px;">좋아요 : <%= @this_article.like_num %>개</span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+									            <% end %>
+								           <% else %>
+								               <h2>로그인 후 시도해주세요.</h2>
+								               <!-- 좋아요 버튼 -->
+								               <img style="width: 30px; padding-bottom: 10px;" src="/assets/like.png">
+								               &nbsp;<span style="font-weight: 800; padding-top:6px; color:#F89F49;"> <%= @this_article.like_num %> (로그인 후 이용)
+								           <% end %>
+									    <% end %>
+									
+									    
+									    
+									    <!-- 만족도평가 modal -->
+									    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+										    <div class="modal-dialog" role="document">
+										        <div class="modal-content">
+										            <div class="modal-header">
+										                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										                <h4 class="modal-title" id="exampleModalLabel">평가</h4>
+										            </div>
+										       			
+										            <%= form_tag( '/home/trip_eval_process' , method: "post") do %>
+										                <input type="hidden" name="eval_id" value="<%= @article_id %>">
+										                <div class="modal-body">
+										                  <div class="col-md-6"> 
+							                            <span>총점</span><br>   
+							                            <fieldset class="rating">
+							                                <input type="radio" id="star5" class="star"name="score_overall" value="10" /><label class = "full" for="star5" title=""></label>
+							                                <input type="radio" id="star4"class="star" name="score_overall" value="8" /><label class = "full" for="star4" title=""></label>
+							                                <input type="radio" id="star3"class="star" name="score_overall" value="6" /><label class = "full" for="star3" title=""></label>
+							                                <input type="radio" id="star2" class="star"name="score_overall" value="4" /><label class = "full" for="star2" title=""></label>
+							                                <input type="radio" id="star1"class="star" name="score_overall" value="2" /><label class = "full" for="star1" title=""></label>
+							                            </fieldset>
+							                        </div>
+										                </div>
+										                
+										                <div class="modal-footer">
+										                    <button type="submit" id="qqq" class="btn btn-primary">변경</button>
+										                    <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+										                </div>
+										            <% end %>      
+										           
+										        </div>
+										    </div>
+										</div>
+										<!-- 만족도 평가 modal end -->
+									    
+									  <!--  
+									    <img src="/assets/star_colored" width="15" height="15" class="star_review">
+									    <img src="/assets/star_colored" width="15" height="15" class="star_review">
+									    <img src="/assets/star_colored" width="15" height="15" class="star_review">
+									    <img src="/assets/star_non" width="15" height="15" class="star_review">
+									    <img src="/assets/star_non" width="15" height="15" class="star_review">
+									    </br>
+									    <span class="bbold"> #아이과자 #오리온 #오징어땅콩 #해산물 #첨가물</span>
+									  -->
+									</p>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							
+							<div class="detail">
+								<div class="detail" id="about">
+									<div class='kkk01'>
+										<div class='kkkk'>
+											<% if Article.find(@article_id).car_id == current_user.car_id %>
+												<div class="info" style="height:27px">
+													<h3 class = result_info>여행 만족도</h3>
+												</div>
+											<% else %>
+												<br>
+												<div class="info" style="height:27px">
+													<h3 class = result_info><%= @post.name %>님의 여행 만족도</h3>
+												</div>
+											<% end %>
+										</div>
+									</div>
+									<ul>
+										<div class="col-md-2"></div>
+										<div class="col-md-8"></div>
+										   <fieldset class="rating4">
+					                          <% 10.downto(1) do |i| %>
+					                             <% if (i == @post.rating and i % 2 == 0) %>
+					                               <label class ="full on"></label>
+					                             <% elsif (i == @post.rating and i % 2 != 0) %>
+					                               <label class="half on"></label>
+					                             <% elsif i % 2 == 0%>
+					                               <label class = "full"></label>
+					                             <% else %>
+					                               <label class="half"></label>
+					                             <% end %>
+					                          <% end %>
+					                      	</fieldset>
+					                     <div class="col-md-2"></div>
+					                     </center>
+									</ul>
+								</div>
+							</div>
+							
+							<div class="detail">
+								<div class="detail" id="about">
+									<div class='kkk01'>
+										<div class='kkkk'>
+											<% if Article.find(@article_id).car_id == current_user.car_id %>
+												<div class="info" style="height:27px">
+													<h3 class = result_info>여행 한줄평</h3>
+												</div>
+											<% else %>
+												<div class="info" style="height:27px">
+													<h3 class = result_info><%= @post.name %>님의 여행 한줄평</h3>
+												</div>
+											<% end %>
+										</div>
+									</div>
+									<ul>
+										<center>
+											<li class='contents'><%= Article.find(@article_id).content %></li>
+										</center>
+									</ul>
+								</div>
+							</div>
+							
+							<br>
+							<center>
+								<a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fbluememory-kafka90.c9users.io">페이스북 공유</a>
+							</center>
+							
+							<br>
+							
+							
+							<div class="detail">
+								<div class="detail" id="about">
+									<div class='kkk01'>
+										<div class='kkkk'>
+											<div class="info">
+												<h3>댓글</h3>
+											</div>
+										</div>
+									</div>
+									
+									<!--로그인을 한 경우 -->
+                    				<%if user_signed_in?%>
+                        				<br><br>
+		                            	<form style="margin-top: -30px; margin-bottom: 30px;" action = "/home/article_reply/" method="POST">
+			                                <input type = "hidden" name = "article_id" value = "<%= @article_id %>">
+			                                <input type = "hidden" name = "email" value = "<%= current_user.email %>">
+			                                <input type = "hidden" name = "username" value = "<%= current_user.name %>">
+			                                <div style="margin-bottom: 20px;">
+			                                  	<div class="col-md-8" style="padding: 0px; margin:0px;">
+			                                  		<input style="font-size: 15px; margin:0px;" placeholder="댓글을 입력해주세요" type="text" name="myreply">
+			                                  	</div>
+			                                 	<div class="col-md-4" style="padding: 5px; margin:0px;">
+			                                  		<input class="btn btn-warning" id="reply_button" type = "submit" value = "작성">
+			                                  	</div>
+			                                </div>
+			                            </form>
+
+	                             		<% @all_replies = Article.find(@article_id).replies.each do |x| %>
+	                             			<hr>
+	                             			<label><%= x.writer %>님의 댓글(<%= x.created_at.in_time_zone("Seoul").strftime("%m/%d")%>)</label>
+	                             			<div class="row">>><%= x.contents %></div>
+	                             		<% end %>
+                    		
+                    			  <!--로그인을 하지 않은 경우 -->
+                    			  <% else %>
+                    
+                    			  <%end%>
+							
+	
+								</div>
+							</div>
+					
+							<!--
+							<div class="detail">
+								<div class="detail" id="about">
+									<div class='kkk'>
+										<div class='kkkk'>
+											<div class="info">
+												<h3>제품리뷰</h3>
+											</div>
+											<div class='kkkkk'>
+												<a href="/home/review"><button class="chanjun">자세히보기</button></a>
+											</div>
+										</div>
+									</div>
+									
+									<div class="each_product_r">
+										<div class="product_left_r">
+											<img class="product_pic" src="/assets/pic3.png" width="110px" height="110px">
+										</div>
+										
+										<div class="product_right">
+										    <div class="right_div" style="width:105%;">
+												<p>
+												    <span class="bbold">닉네임 :</span> 퉁퉁이아빠 </br>
+												    <span class="bbold">개인평점 :</span> 
+												    <img src="/assets/star_colored" width="15" height="15" class="star_review">
+												    <img src="/assets/star_colored" width="15" height="15" class="star_review">
+												    <img src="/assets/star_colored" width="15" height="15" class="star_review">
+												    <img src="/assets/star_non" width="15" height="15" class="star_review">
+												    <img src="/assets/star_non" width="15" height="15" class="star_review">
+												    </br>
+												    <span class="bbold">공감수 :</span> 137</br>
+												    <span class="bbold">후기 :</span> 우리 퉁퉁이는 3개월차 건강한 남아에요...</br>
+												</p>
+											</div>
+										</div>
+										<div class="clearfix"> </div>
+									</div>
+								</div>
+							</div>
+							-->
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<input type="hidden" id="check_id" value="<%= @this_article.car_id %>">
+<input type="hidden" id="check_trip" value="<%= @this_article.trip_num %>">
+</body>
+
+
+<!--
+<input type="text" id="check_origin_lati" value="<!%= @locations.first.latitude %>">
+<input type="text" id="check_origin_long" value="<!%= @locations.first.longitude %>"><br>
+<input type="text" id="check_destination_lati" value="<!%= @locations.last.latitude %>">
+<input type="text" id="check_destination_long" value="<!%= @locations.last.longitude %>">
+-->
+
+
+
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers1 = handler.addMarkers(<%=raw @hash1.to_json %>);
+  handler.bounds.extendWith(markers1);
+  markers2 = handler.addMarkers(<%=raw @hash2.to_json %>);
+  handler.bounds.extendWith(markers2);
+  markers3 = handler.addMarkers(<%=raw @hash3.to_json %>);
+  handler.bounds.extendWith(markers3);
+  
+  handler.fitMapToBounds();
+	handler.addPolyline(<%=raw @hash.to_json %>); // and not addPolylines
+	handler.bounds.extend(<%=raw @hash.to_json %>[0]);
+	handler.fitMapToBounds();
+});
+</script>

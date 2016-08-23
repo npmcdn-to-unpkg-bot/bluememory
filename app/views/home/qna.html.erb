@@ -1,0 +1,126 @@
+
+<div class="body-back">
+	<div class="masthead pdng-stn1">
+		<!--사이드바-->
+		<div id="menu" class="sidenav" role="navigation">
+			<div class="wrap-content">
+				<div class="nav-menu text-center">
+					<img class="nav-profile img-circle border-effect" src="/assets/ilguk.png" alt=" ">
+					<img class="side-go nav-camera" onclick="DoNav('/home/myprofile')" src="/assets/camera.gif" alt=" ">
+					<p class="nav-nickname"><%=current_user.name%></p>
+					<button class="nav-proedit-btn" onclick="DoNav('/users/sign_out')">로그아웃</button>
+
+					
+					<div class="side-go" onclick="DoNav('/home/myfood')">
+						<img class="side-nemo" src="/assets/my_food.png" alt=" ">
+						<p class="side-nemo-label">여행일지</p>
+					</div>	
+					
+					<div class="side-go" onclick="DoNav('/home/checklist')">
+						<img class="side-nemo" src="/assets/checklist.gif" alt=" ">
+						<p class="side-nemo-label">체크리스트</p>
+					</div>
+					
+					<div class="side-go" onclick="DoNav('/home/qna')">
+						<img class="side-nemo" src="/assets/qna.png" alt=" ">
+						<p class="side-nemo-label">Q&A</p>
+					</div>
+					
+					<div class="side-go" onclick="DoNav('/home/setting')">
+						<img class="side-nemo" src="/assets/setting.png" alt=" ">
+						<p class="side-nemo-label">설정</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+		<div class="phone-box wrap push">
+		    
+		    <!-- nav -->
+			<div class="navtop">
+				<div class="nav-left">
+					<a href="#menu" class="menu-link"><img src="/assets/left-top.gif" class="nav-img"/></a>
+				</div>
+				<div class="nav-name">
+					<h5 class="pro-link qqqq">Q&A</h5>
+				</div>
+				<div class="nav-right">
+				    <a href="/home/index"><img src="/assets/go-home.gif" class="nav-img"/></a>
+					
+				</div>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<!--리얼 바디-->
+			<div class="main-grid">
+				<div class="main-shade">
+        			    <div class="noticeee_label">
+        		         	<p class="main-name" style="margin-bottom:7px;"> 자주하는 질문
+        		         	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        		         	<button class="noticeee_label_btn qq1_btn_left">더 보기</button>
+        		         	</p>
+        		     	</div>  
+        			    <div class="noticeee">
+        			    	<table border="0" width="400" class="noticeee_table">
+	                            <tr>
+	                            <td class="noticeee_line indent">회원가입을 다시하고 싶으면 어떻게 하면 될까요?</td>
+	                            </tr>
+	                            <tr>
+	                            <td class="noticeee_line indent">업데이트 이후로 앱이 정상적으로 작동하지않아요.</td>
+	                            </tr>
+	                            <tr>
+	                            <td class="noticeee_line indent">선호하는 리뷰들은 어디가면 볼 수 있나요?</td>
+	                            </tr>
+	                            <tr>
+	                            <td class="noticeee_line indent">프로필 변경은 어떻게 하나요?</td>
+	                            </tr>
+	                            <tr>
+	                            <td class="indent">블루메모리 회원탈퇴는 어디서 하나요?</td>
+	                            </tr>
+                      		</table>
+        		        </div>
+        		        
+        		        <br>
+        		        
+        		         <div class="introduce_label">
+        		         	<p class="main-name" style="margin-bottom:7px;"> 묻고 답해요
+        		         	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        		         	<button class="noticeee_label_btn qq_btn_left">더 보기</button>
+        		         	</p>
+        		         </div>
+        		         <div class="noticeee">
+        			     	<table border="0" width="400" class="noticeee_table">
+	                            <tr>
+	                            <td class="noticeee_line indent">어르신과 여행 예정인 30대 주부에요.</td>
+	                            </tr>
+	                            <tr>
+	                            <td class="noticeee_line indent">여행경비 대비 추억남길만한 여행 추천받아요.</td>
+	                            </tr>
+	                            <tr>
+	                            <td class="noticeee_line indent">지난 주말, 여수 엑스포에 다녀왔어요.</td>
+	                            </tr>
+	                            <tr>
+	                            <td class="noticeee_line indent">자차로 지리산 다녀와보신분? 주차공간 괜찮나요?</td>
+	                            </tr>
+	                            <tr>
+	                            <td class="indent">드라이브할만한 예쁜 도로 없을까요?</td>
+	                            </tr>
+                      		</table>
+        		        </div>
+        		        
+        		        <div class="ddddd" style="background:white; height:30px;"></div>
+        		        
+        		        <div class="foot">
+        		        	
+        		        </div>
+				</div>
+			</div>
+				
+  </div>
+</div>
+</div>
+
+<script src="/assets/jquery.nicescroll.js"></script>
+<script src="/assets/scripts.js"></script>
+

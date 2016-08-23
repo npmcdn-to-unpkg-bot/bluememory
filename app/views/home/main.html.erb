@@ -1,0 +1,201 @@
+
+<div class="body-back">
+	
+	<div class="masthead pdng-stn1">
+		<!--사이드바-->
+		<div id="menu" class="sidenav" role="navigation">
+			<div class="wrap-content">
+				<div class="nav-menu text-center">
+					<img class="nav-profile img-circle border-effect" src="/assets/ilguk.png" alt=" ">
+					<img class="side-go nav-camera" onclick="DoNav('/home/myprofile')" src="/assets/camera.gif" alt=" ">
+					<p class="nav-nickname"><%=current_user.name%></p>
+					<button class="nav-proedit-btn" onclick="DoNav('/users/sign_out')">로그아웃</button>
+
+					
+					<div class="side-go" onclick="DoNav('/home/myfood')">
+						<img class="side-nemo" src="/assets/my_food.png" alt=" ">
+						<p class="side-nemo-label">여행일지</p>
+					</div>	
+					
+					<div class="side-go" onclick="DoNav('/home/checklist2')">
+						<img class="side-nemo" src="/assets/checklist.gif" alt=" ">
+						<p class="side-nemo-label">체크리스트</p>
+					</div>
+					
+					<div class="side-go" onclick="DoNav('/home/qna')">
+						<img class="side-nemo" src="/assets/qna.png" alt=" ">
+						<p class="side-nemo-label">Q&A</p>
+					</div>
+					
+					<div class="side-go" onclick="DoNav('/home/setting')">
+						<img class="side-nemo" src="/assets/setting.png" alt=" ">
+						<p class="side-nemo-label">설정</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+	<div class="phone-box wrap push">
+	<!-- nav -->
+		<div class="navtop">
+			<div class="nav-left">
+				<a href="#menu" class="menu-link"><img src="/assets/left-top.gif" class="nav-img"/></a>
+			</div>
+				
+			<div class="nav-name">
+				<a href="/home/main" style="text-decoration: none"><h5 class="pro-link2">blueMemory</h5></a>
+			</div>
+				
+			<div class="nav-right">
+				<a href="/home/index"><img src="/assets/go-home.gif" class="nav-img"/></a>
+			</div>
+			
+			<div class="clearfix"></div>
+		</div> 
+			
+			<!--리얼 바디-->
+		<div class="main-grid">
+			<div class="main-shade">
+			<div class="food_search">
+				<form>
+					<input type="search" placeholder="검색어를 입력해주세요!" >
+					  <a href="/home/product_detail"><input type="submit" value=" "></a>
+						<div class="search_click" onclick="DoNav('/home/product_detail')"></div>
+				</form>
+			</div>
+			
+			<div class="search_rec">
+					<p>
+						<a href="/home/product_detail" class="search_rec_k">#추천코스</a>
+						<a href="/home/product_detail" class="search_rec_k">#경상도</a>
+						<a href="/home/product_detail" class="search_rec_k">#강원도</a>
+						<a href="/home/product_detail" class="search_rec_k">#전라도</a>
+					</p>
+			</div>
+			
+			
+	
+			
+		 		  <div class="hot_food">
+		    <img src="/assets/hot_food_label.gif" class="hot_food_label"/> 
+        <article id="cc-slider">
+          <input checked="checked" name="cc-slider" id="slide1" type="radio">
+          <input name="cc-slider" id="slide2" type="radio">
+          <input name="cc-slider" id="slide3" type="radio">
+          <input name="cc-slider" id="slide4" type="radio">
+          <input name="cc-slider" id="slide5" type="radio">
+          
+          <div id="cc-slides">
+            <div id="overflow">
+              <div class="inner">
+                <article>
+                  <img src="/assets/p01.png" onclick="DoNav('/locations/index/8')" style="cursor:pointer;"> 
+                </article>
+                
+                <article>
+                  <div class="cctooltip">
+                    <h3>Abstract Retro Photography</h3>
+                    <h4>By <a href="#">codeconvey</a></h4>
+                  </div>
+                  <img src="/assets/p02.png" onclick="DoNav('/locations/index/10')" style="cursor:pointer;"> </article>
+                <article>
+                  <div class="cctooltip">
+                    <h3>Street Photography</h3>
+                    <h4>By <a href="#">codeconvey</a></h4>
+                  </div>
+                  <img src="/assets/p03.png" onclick="DoNav('/locations/index/5')" style="cursor:pointer;"> </article>
+              </div>
+            </div>
+          </div>
+          <div id="controls">
+              <label for="slide1"></label>
+              <label for="slide2"></label>
+              <label for="slide3"></label>
+            </div>
+          </article>	
+      </div>
+		
+		
+    			    <div class="food_article_label">
+    		         	<p class="main-name">여행관련 뉴스
+    		         	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    		         	<button class="food_article_label_btn">더 보기</button>
+    		         	</p>
+    		      </div>
+    		         
+    			    <div class="food_article">
+    			        <table border="0" width="400" class="food_article_table">
+                        <tr onclick="DoNav('http://m.news.naver.com/read.nhn?mode=LSD&mid=sec&sid1=103&oid=057&aid=0001006108')">
+                          <td class="food_article_line indent">여름 더위 날려줄 자라섬 축제…무엇이 있나 살펴..</td>
+                        </tr> 
+                      
+                        <tr onclick="DoNav('http://m.news.naver.com/read.nhn?mode=LSD&mid=sec&sid1=102&oid=079&aid=0002847453')">
+                          <td class="food_article_line indent">김해 가야테마파크 '쿨섬머 페스티벌' 개최</td>
+                        </tr>
+                      
+                        <tr onclick="DoNav('http://m.news.naver.com/read.nhn?mode=LSD&mid=sec&sid1=103&oid=053&aid=0000022204')">
+                          <td class="food_article_line indent">더위 먹은 이들에게 약이 되는 전국 계곡 6선</td>
+                        </tr>
+                        
+                        <tr onclick="DoNav('http://m.news.naver.com/read.nhn?mode=LSD&mid=sec&sid1=103&oid=001&aid=0008592739')">
+                          <td class="food_article_line indent">충청남도 태안으로 '연꽃'구경 오세요</td>
+                        </tr>
+                      
+                        <tr onclick="DoNav('http://m.news.naver.com/read.nhn?mode=LSD&mid=sec&sid1=103&oid=421&aid=0002235745')">
+                          <td class="indent">가을, 한옥에서 하룻밤 보내며 걷기여행 어때요?</td>
+                        </tr>
+                      
+                    </table>
+    		        </div>
+    		        
+    		         <div class="food_dic_label">
+    		         	<p class="main-name" onclick="DoNav('/home/dic_main')">여행지 사전
+    		         	<button class="food_dic_label_btn" onclick="DoNav('/home/dic_main')">더 보기</button>
+    		         	</p>
+    		         </div>
+    		         <div class="food_dic">
+    			     		<table border="0" width="400" class="food_dic_table">
+    			     		      <% @spot = Spot.all %>
+    			     		      <% @spot01 = @spot.where(name:'경포대') %>
+                        <tr onclick="DoNav('/home/dic_id/<%= @spot01.ids.first %>')">
+                          <td class="food_dic_line indent">경포대</td>
+                        </tr>
+                        
+                        <% @spot02 = @spot.where(name:'정동진') %>
+                        <tr onclick="DoNav('/home/dic_id/<%= @spot02.ids.first %>')">
+                          <td class="food_dic_line indent">정동진</td>
+                        </tr>
+                        
+                        <% @spot03 = @spot.where(name:'남대문시장') %>
+                        <tr onclick="DoNav('/home/dic_id/<%= @spot03.ids.first %>')">
+                          <td class="food_dic_line indent">남대문시장</td>
+                        </tr>
+                        
+                        <% @spot04 = @spot.where(name:'아침고요수목원') %>
+                        <tr onclick="DoNav('/home/dic_id/<%= @spot04.ids.first %>')">
+                          <td class="food_dic_line indent">아침고요수목원</td>
+                        </tr>
+                        
+                        <% @spot05 = @spot.where(name:'허브아일랜드') %>
+                        <tr onclick="DoNav('/home/dic_id/<%= @spot05.ids.first %>')">
+                          <td class="indent">허브아일랜드</td>
+                        </tr>
+                  </table>
+    		        </div>
+    		        
+    		        <div class="foot">
+    		        	
+    		        </div>
+		</div>	    
+	    
+	</div>
+			
+		
+				
+  </div>
+</div>
+</div>
+
+<script src="/assets/jquery.nicescroll.js"></script>
+<script src="/assets/scripts.js"></script>

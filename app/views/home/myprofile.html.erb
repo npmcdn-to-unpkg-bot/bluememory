@@ -1,0 +1,148 @@
+	<div class="masthead pdng-stn1">
+		<!--사이드바-->
+		<div id="menu" class="sidenav" role="navigation">
+			<div class="wrap-content">
+				<div class="nav-menu text-center">
+					<img class="nav-profile img-circle border-effect" src="/assets/ilguk.png" alt=" ">
+					<img class="side-go nav-camera" onclick="DoNav('/home/myprofile')" src="/assets/camera.gif" alt=" ">
+					<p class="nav-nickname"><%=current_user.name%></p>
+					<button class="nav-proedit-btn" onclick="DoNav('/users/sign_out')">로그아웃</button>
+
+					
+					<div class="side-go" onclick="DoNav('/home/myfood')">
+						<img class="side-nemo" src="/assets/my_food.png" alt=" ">
+						<p class="side-nemo-label">여행일지</p>
+					</div>	
+					
+					<div class="side-go" onclick="DoNav('/home/checklist')">
+						<img class="side-nemo" src="/assets/checklist.gif" alt=" ">
+						<p class="side-nemo-label">체크리스트</p>
+					</div>
+					
+					<div class="side-go" onclick="DoNav('/home/qna')">
+						<img class="side-nemo" src="/assets/qna.png" alt=" ">
+						<p class="side-nemo-label">Q&A</p>
+					</div>
+					
+					<div class="side-go" onclick="DoNav('/home/setting')">
+						<img class="side-nemo" src="/assets/setting.png" alt=" ">
+						<p class="side-nemo-label">설정</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+			
+		<div class="phone-box wrap push">
+		    <!-- nav -->
+			<div class="navtop">
+				<div class="nav-left">
+					<a href="#menu" class="menu-link"><img src="/assets/left-top.gif" class="nav-img"/></a>
+				</div>
+				<div class="nav-name">
+					<h5 class="pro-link nav_prof">PROFILE</h5>
+				</div>
+				<div class="nav-right">
+				    <a href="/home/index"><img src="/assets/go-home.gif" class="nav-img"/></a>
+				</div>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<!--리얼 바디-->
+	       <div class="profile_body">
+        		<table border="0" width="400" class="profile_body_table">
+	            	<tr>
+	                	<td class="profile_body_line">
+	                		<center>
+	                			<img class="my-circle my-border-effect my-face" src="/assets/ilguk.png" alt=" ">
+								<img class="side-go my-camera" src="/assets/camera.gif" >
+							</center>	                
+	                	</td>
+	                </tr>
+	                
+	            	<br>
+	                
+	                <tr>
+	                	<td class="profile_body_line">
+	                		<form class="form-inline">
+	                			<br><br>
+								  <div class="pf_form-group">
+								  	<label for="pf_nickname">닉네임 :</label> 
+								  	<input type="text" style="margin-top:6px;" class="pf_name_form form-control" id="pf_nickname" value= "<%= current_user.name %>" >
+								  </div>
+								  
+								  <br>
+								  
+								  <div class="pf_form-group">
+								  	<label for="pf_age">차량ID :</label>
+								  	<input type="text" style="margin-top:6px;" class="pf_name_form form-control" id="pf_age" value="<%= current_user.car_id %>">
+								  </div>
+								  
+								  <br>
+								  
+								  <div class="pf_form-group">
+								  	<label for="pf_gender">이메일 :</label>
+								  	<input type="text" style="margin-top:6px;" class="pf_name_form form-control" id="pf_gender" value="<%= current_user.email %>">
+								  </div>
+								  
+								  <br>
+								 
+							</form>
+	                		
+	                	</td>
+	                </tr>
+               </table>
+               <input type="button" class="actions signin_btnn01" data-toggle="modal" data-target="#myModal" value="프로필 수정">
+       		</div>
+       		
+       		<form action="/home/profile_modify" method="post">
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				    <div class="modal-dialog" style="margin-top: 50%;">
+				        <div class="modal-content">
+				            <div class="modal-header" class="checkmodal" style="background-color: #fdd020; border-bottom: 1px solid #fdd020;">
+				                <h4 class="modal-title" id="myModalLabel" 
+				                style="text-align: center;
+									    font-family: 'Noto Sans Korean', 'Open Sans', sans-serif;
+									    font-weight: 200;
+									    color: #fff;
+									    font-size: 20px;
+									    height:10px;">프로필 수정</h4>
+				            </div>
+				            
+				            <div class="modal-body" class="checkmodal" style="background-color: #fdd020; margin-bottom: -12px;">
+				                <input type="text" class="form-control" name="email" value="<%= current_user.email %>">
+				                <input type="text" class="form-control" name="name" value="<%= current_user.name %>">
+				                <input type="text" class="form-control" name="car_id" value="<%= current_user.car_id %>">
+				            </div>
+				            
+				            <div class="modal-footer" class="checkmodal" style="background-color: #fdd020; border-top: 1px solid #fdd020;">
+				                
+				                <button type="button" class="btn btn-default" data-dismiss="modal"
+				                	style="background-color: white;
+				                	margin-left: 10px;
+								    text-align: center;
+								    font-family: 'Noto Sans Korean', 'Open Sans', sans-serif;
+								    font-weight: 200;
+								    color: #fdd020;
+								    font-size: 20px;
+								    border: none"
+								    >취소</button>
+								    
+				                <button type="submit" class="btn btn-primary"
+				                	style="background-color: white;
+								    text-align: center;
+								    font-family: 'Noto Sans Korean', 'Open Sans', sans-serif;
+								    font-weight: 200;
+								    color: #fdd020;
+								    font-size: 20px;
+							        border: none;"
+								    >수정하기</button></a>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			</form>
+        		        
+        		        
+<script src="/assets/jquery.nicescroll.js"></script>
+<script src="/assets/scripts.js"></script>

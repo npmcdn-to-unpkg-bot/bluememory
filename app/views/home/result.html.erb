@@ -1,0 +1,185 @@
+
+<body>
+<div class="body-back">
+	<div class="masthead pdng-stn1">
+		<!--사이드바-->
+		<div id="menu" class="sidenav" role="navigation">
+			<div class="wrap-content">
+				<div class="nav-menu text-center">
+					<img class="nav-profile img-circle border-effect" src="/assets/ilguk.png" alt=" ">
+					<img class="side-go nav-camera" onclick="DoNav('/home/myprofile')" src="/assets/camera.gif" alt=" ">
+					<p class="nav-nickname"><%=current_user.name%></p>
+					<button class="nav-proedit-btn" onclick="DoNav('/users/sign_out')">로그아웃</button>
+
+					
+					<div class="side-go" onclick="DoNav('/home/myfood')">
+						<img class="side-nemo" src="/assets/my_food.png" alt=" ">
+						<p class="side-nemo-label">여행일지</p>
+					</div>	
+					
+					<div class="side-go" onclick="DoNav('/home/checklist')">
+						<img class="side-nemo" src="/assets/checklist.gif" alt=" ">
+						<p class="side-nemo-label">체크리스트</p>
+					</div>
+					
+					<div class="side-go" onclick="DoNav('/home/qna')">
+						<img class="side-nemo" src="/assets/qna.png" alt=" ">
+						<p class="side-nemo-label">Q&A</p>
+					</div>
+					
+					<div class="side-go" onclick="DoNav('/home/setting')">
+						<img class="side-nemo" src="/assets/setting.png" alt=" ">
+						<p class="side-nemo-label">설정</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="phone-box wrap push">
+	    <!-- nav -->
+		<div class="navtop">
+			<div class="nav-left">
+				<a href="#menu" class="menu-link"><img src="/assets/left-top.gif" class="nav-img"/></a>
+			</div>
+			
+			<div class="nav-name">
+				<a href="/home/product_detail" style="text-decoration: none"><h5 class="pro-link uuuset"> REVIEW </h5></a>
+			</div>
+			
+			<div class="nav-right">
+			    <a href="/home/index"><img src="/assets/go-home.gif" class="nav-img"/></a>
+			</div>
+			<div class="clearfix"></div>
+		</div> 
+		
+		<!--리얼바디-->
+		<div class="main-grid">
+			<div class="main-shade">
+				<div class="food_search">
+					<form>
+						<input type="search" placeholder="검색어를 입력해주세요!" >
+						  <a href="/home/product_detail"><input type="submit" value=" "></a>
+  						<div class="search_click" onclick="DoNav('/home/product_detail')"></div>
+					</form>
+				</div>
+				
+				<div class="search_rec">
+					<p>
+						<a href="/home/product_detail" class="search_rec_k"> #아기과자 </a>
+						<a href="/home/product_detail" class="search_rec_k">#과자</a>
+						<a href="/home/product_detail" class="search_rec_k">#GMO</a>
+						<a href="/home/product_detail" class="search_rec_k">#감자칩</a>
+					</p>
+				</div>
+				   
+        		<div class="menu_img">
+					<div class="menu_each_product">
+						<div class="each_product_detail">
+							<div class="product_left">
+								<img class="product_pic" src="/assets/오징어땅콩.png" width="110px" height="110px">
+							</div>
+							
+							<div class="product_right">
+							    <div class="right_div">
+									<p>
+									    <span class="bbold">제품명 :</span> 오징어땅콩 </br>
+									    <span class="bbold">제조사 :</span> 오리온 제과 </br>
+									    <span class="bbold">리뷰평점 :</span> 
+									    <img src="/assets/star_colored" width="15" height="15" class="star_review">
+									    <img src="/assets/star_colored" width="15" height="15" class="star_review">
+									    <img src="/assets/star_colored" width="15" height="15" class="star_review">
+									    <img src="/assets/star_non" width="15" height="15" class="star_review">
+									    <img src="/assets/star_non" width="15" height="15" class="star_review">
+									    </br>
+									    <span class="bbold"> #아이과자 #오리온 #오징어땅콩 #해산물 #첨가물</span>
+									</p>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+								
+							<div class="detail">
+								<div class="detail" id="about">
+									<div class='kkk'>
+										<div class='kkkk'>
+											<div class="info" style="height:27px">
+												<h3 class = result_info>제품성분 정보</h3>
+											</div>
+										</div>
+									</div>
+									<ul>
+										<li class='contents'>가공땅콩(중국산/땅콩,밀가루,물엿)</li>
+										<li class='contents'>찰옥수수전분(이탈리아산73%, 수입산27%)</li>
+										<li class='contents'>밀가루</li>
+										<li class='contents'>백설탕</li>
+										<li class='contents'>혼합식용유(해바라기유50%, 팜올레인유50%)</li>
+									</ul>
+								</div>
+							</div>
+					
+							<div class="detail">
+								<div class="detail" id="about">
+									<div class='kkk'>
+										<div class='kkkk'>
+											<div class="info">
+												<h3>제조사 정보</h3>
+											</div>
+										</div>
+									</div>
+									
+									<div class="each_product_r">
+										<div class="product_top">
+											<img class="product_top" src="/assets/Orion.png" width="110px" height="110px" style="margin-left:65px;">
+										</div>
+										<div class="clearfix"> </div>
+										<p>(주)오리온은 대한민국의 제과 회사 이다. 오리온그룹의 계열사 및 주력 회사 이며, 초코파이로 유명하다. 1934년 4월 13일에 설립하였으며 본사는 서울특별시 용산구 문배동에 있다.</p>
+									</div>
+								</div>
+							</div>
+					
+							<div class="detail">
+								<div class="detail" id="about">
+									<div class='kkk'>
+										<div class='kkkk'>
+											<div class="info">
+												<h3>제품리뷰</h3>
+											</div>
+											<div class='kkkkk'>
+												<a href="/home/review"><button class="chanjun">자세히보기</button></a>
+											</div>
+										</div>
+									</div>
+									
+									<div class="each_product_r">
+										<div class="product_left_r">
+											<img class="product_pic" src="/assets/pic3.png" width="110px" height="110px">
+										</div>
+										
+										<div class="product_right">
+										    <div class="right_div" style="width:105%;">
+												<p>
+												    <span class="bbold">닉네임 :</span> 퉁퉁이아빠 </br>
+												    <span class="bbold">개인평점 :</span> 
+												    <img src="/assets/star_colored" width="15" height="15" class="star_review">
+												    <img src="/assets/star_colored" width="15" height="15" class="star_review">
+												    <img src="/assets/star_colored" width="15" height="15" class="star_review">
+												    <img src="/assets/star_non" width="15" height="15" class="star_review">
+												    <img src="/assets/star_non" width="15" height="15" class="star_review">
+												    </br>
+												    <span class="bbold">공감수 :</span> 137</br>
+												    <span class="bbold">후기 :</span> 우리 퉁퉁이는 3개월차 건강한 남아에요...</br>
+												</p>
+											</div>
+										</div>
+										<div class="clearfix"> </div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>

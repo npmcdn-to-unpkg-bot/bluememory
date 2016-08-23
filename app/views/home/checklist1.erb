@@ -1,0 +1,107 @@
+<%= render :partial => "/home/sidebar" %>
+
+		<div class="phone-box wrap push">
+		    <!-- nav -->
+			<div class="navtop">
+				<div class="nav-left">
+					<a href="#menu" class="menu-link"><img src="/assets/left-top.gif" class="nav-img"/></a>
+				</div>
+				<div class="nav-name">
+					<h5 class="pro-link">CHECKLIST</h5>
+				</div>
+				<div class="nav-right">
+				    <a href="/home/index"><img src="/assets/go-home.gif" class="nav-img"/></a>
+				</div>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<!--리얼 바디-->
+	        <div style="min-height: 532px; min-width:375px;
+		         background-image:url(/assets/korea.png);
+		         background-repeat:no-repeat;
+		         background-position: 13px 10px;
+		         background-color: white;"
+			     >
+	                    <div class="food_check" style="padding-top: 41px;">
+	                        <div class="check_title_box">
+	                        	
+	                            <h5><%=@checklists_selected.title %></h5>
+	                            <form action="/home/delete_list/<%=@checklists_selected.id%>" method="post">
+	                            	<button type="submit" class="edit_title" style="right: 28px; top: 110px"><img class="edit_title_img" src="/assets/trashcan.png"></button>
+	                        	</form>
+	                        </div>
+        			    	<table border="0" width="100%"class="food_check_table">
+	                            <% @additives.each do |p|%>
+		                            <tr onclick="DoNav('/home/dic_id')">
+			                            <td class="food_check_line indent"> <%=p.name%>
+				                            	<button id="성분백과버튼" class="edit_additive"><img class="edit_additive_img" style="height: 30px;" src="/assets/arrow_check.PNG"></button>
+				                            <form action="/home/delete_additive/<%=p.id%>" method="post">
+				                            	<button type="submit" class="edit_additive" style="right: 16px; top: 2px"><img class="edit_additive_img" src="/assets/trashcan.png"></button> 
+				                            </form>
+			                            </td>
+		                            </tr>
+	                            <% end %>
+                      		</table>
+        		        </div>
+        		        <button id="myBtn" class="add_check22"><img class="add_check_img" src="/assets/addcheck.png"></button>
+        		      
+	        </div>
+		</div>	
+		
+    <!-- Modal -->
+    <form action="/home/additive_create/<%=@checklists_selected.id%>" method="post">
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-dialog" style="margin-top: 50%;">
+		        <div class="modal-content">
+		            <div class="modal-header" class="checkmodal" style="background-color: #fdd020; border-bottom: 1px solid #fdd020;">
+		                <h4 class="modal-title" id="myModalLabel" 
+		                style="text-align: center;
+							    font-family: 'Noto Sans Korean', 'Open Sans', sans-serif;
+							    font-weight: 200;
+							    color: #fff;
+							    font-size: 20px;"
+					    >체크리스트 성분 추가</h4>
+		            </div>
+		            <div class="modal-body" class="checkmodal" style="background-color: #fdd020;">
+		                <input type="text" class="form-control" name="name" placeholder="추가할 성분을 입력하세요">
+		            </div>
+		            <div class="modal-footer" class="checkmodal" style="background-color: #fdd020; border-top: 1px solid #fdd020;">
+		                
+		                <a href="/home/dic_main"><button type="button" class="btn btn-default"
+		                	style="background-color: white;
+		                	margin-left: 10px;
+						    text-align: center;
+						    font-family: 'Noto Sans Korean', 'Open Sans', sans-serif;
+						    font-weight: 200;
+						    color: #fdd020;
+						    font-size: 20px;
+						    border: none"
+						    >성분백과</button></a>
+						    
+		                <button type="submit" class="btn btn-primary"
+		                	style="background-color: white;
+						    text-align: center;
+						    font-family: 'Noto Sans Korean', 'Open Sans', sans-serif;
+						    font-weight: 200;
+						    color: #fdd020;
+						    font-size: 20px;
+					        border: none;"
+						    >추가하기</button></a>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	</form>
+
+<script>
+// when DOM is ready
+$(document).ready(function () {
+
+     // Attach Button click event listener 
+    $("#myBtn").click(function(){
+
+         // show Modal
+         $('#myModal').modal('show');
+    });
+});
+</script>
